@@ -11,6 +11,10 @@ const sendEmail = (email, subject, data) => {
         user: process.env.ADMIN_EMAIL,
         pass: process.env.ADMIN_PASSWORD,
       },
+      tls: {
+        // Do not fail on invalid certs
+        rejectUnauthorized: false
+      }
     });
 
     const mailOptions = () => {
@@ -21,11 +25,15 @@ const sendEmail = (email, subject, data) => {
         html: data,
       };
     };
+
     // Send email
     transporter.sendMail(mailOptions(), (error, info) => {
       if (error) {
+        console.log("err", error);
         return error;
       } else {
+        console.log("info", info);
+
         return info;
       }
     });

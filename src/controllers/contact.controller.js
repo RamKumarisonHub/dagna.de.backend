@@ -6,7 +6,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 // Handle the contact response
 const createContact = asyncHandler(async (req, res) => {
   try {
-    console.log("111111111111111", req.body);
     const contactResponse = await contactService.createContact(req.body);
     return res
       .status(200)

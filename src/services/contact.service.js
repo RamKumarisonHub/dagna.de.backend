@@ -7,7 +7,6 @@ import { sendEmail } from "../utils/send.email.js";
 // Contact Methods
 const createContact = async (contactDetails) => {
   const { firstName, lastName, phoneNumber, email, message } = contactDetails;
-  console.log("222222222222222", contactDetails);
 
   if (!firstName || !phoneNumber || !email || !message) {
     throw new apiError(400, "Missing Fields Are Required");
@@ -40,7 +39,7 @@ const createContact = async (contactDetails) => {
 
   <b>Name:</b> ${firstName} ${lastName}<br>
   <b>Phone Number:</b> ${phoneNumber}<br>
-  <b>Email:</b> ${email}<br>
+  <b>Email:</b>${email}<br>
   <b>Message:</b> ${message? message: ''}<br><br>
 
   <p>Regards,</p>
@@ -48,7 +47,7 @@ const createContact = async (contactDetails) => {
   `;
 
   // Send the email for new contact user
-  await sendEmail(email, subject, adminMessage);
+  await sendEmail('info@dagna.de', subject, adminMessage);
 
   // Constructing the email message for User
   const userSubject = "Thank you for contacting us!";

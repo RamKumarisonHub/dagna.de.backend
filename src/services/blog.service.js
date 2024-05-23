@@ -21,11 +21,16 @@ const uploadBlog = async (
   const { blogAuthorName, blogTitle, blogDescription } = blogDetails;
 
   if (!blogAuthorName || !blogTitle || !blogDescription) {
-    throw new apiError(400, "Missing Fiels Are Required");
+    throw new apiError(400, "Missing Fields Are Required");
   }
 
   if (!blogImageLocalPath || !pdfFileForBlogLocalPath) {
     throw new apiError(400, "Image and PDF file is required");
+  }
+
+  const existingBlog = await Blog.findOne({blogTitle});
+  if (existingBlog) {    
+    throw new apiError(400, "Blog already exists"); 
   }
 
   const newBlog = await Blog.create({
@@ -45,7 +50,8 @@ const uploadBlog = async (
 
 // Get all the blog which is uploaded by admin
 const getUploadedBlog = async () => {
-  const allBlogs = await Blog.find();
+// const allBlogs = await Blog.find().sort({createdAt : -1});
+const allBlogs = await Blog.find();
   if (allBlogs.length === 0) {
     throw new apiError(404, "No Blogs Found");
   }

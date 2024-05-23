@@ -2,7 +2,7 @@ import userService from "../services/user.service.js";
 import { apiResponse } from "../utils/apiResponse.js";
 import { apiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { validatePassword } from "../helper/helper.functions.js"
+import { validatePassword } from "../helpers/helper.methods.js"
 
 //Register User
 const registerUser = asyncHandler(async (req, res) => {

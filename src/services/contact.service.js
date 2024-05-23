@@ -1,5 +1,5 @@
 import { isValidObjectId } from "mongoose";
-import { validateEmail } from "../helper/helper.functions.js";
+import { validateEmail } from "../helpers/helper.methods.js";
 import Contact from "../models/contact.model.js";
 import { apiError } from "../utils/apiError.js";
 import { sendEmail } from "../utils/send.email.js";

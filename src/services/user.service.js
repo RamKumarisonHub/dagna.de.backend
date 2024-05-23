@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import { apiResponse } from "../utils/apiResponse.js";
 import { apiError } from "../utils/apiError.js";
 import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/cloudinary.js";
-import { validateEmail, validatePassword } from "../helper/helper.functions.js";
+import { validateEmail, validatePassword } from "../helpers/helper.methods.js";
 import { sendEmail } from "../utils/send.email.js";
 
 //Generate Access and Refresh Tokens
